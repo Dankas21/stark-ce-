@@ -1,0 +1,36 @@
+desc
+
+
+
+
+<?php
+require_once 'conexao.php';
+$odb = new PDO('mysql:host=sistemas.fundacaostickel.org;dbname=sistemas', 'stickel', 'alm#2017');
+$query = "SELECT idProfessor, nomeartistico FROM tab_professor";
+    $data = $odb->prepare($query);   
+    $data->execute();
+    while($row=$data->fetch(PDO::FETCH_ASSOC)){
+	echo '<option value="'.$row['nomeartistico'].'">'.$row['nomeartistico'].'</option>';
+	
+    }
+?>
+</select>
+				  <span class='msg-erro msg-nomeArtista'></span>
+			    </div>
+				
+			 <div class="form-group">
+			      <label for="razaoParceiro">Razão Social do Parceiro</label>
+			      <select class="form-control" name="razaoParceiro" id="razaoParceiro">
+			  <option value="">Selecione o Parceiro</option>
+<?php
+require_once 'conexao.php';
+$odb = new PDO('mysql:host=sistemas.fundacaostickel.org;dbname=sistemas', 'stickel', 'alm#2017');
+$query = "select id, nome from tab_parceiros";
+    $data = $odb->prepare($query);   
+    $data->execute();
+    while($row=$data->fetch(PDO::FETCH_ASSOC)){
+	echo '<option value="'.$row['nome'].'">'.$row['nome'].'</option>';
+	
+    }
+?> </div>
+				  </select>
